@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio – Harshita Yadav</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+        /* ---------------------------- ROOT COLORS ---------------------------- */
+        :root {
+            --primary: #6a5acd;
+            --secondary: #ff7f50;
+            --dark: #1b1b2f;
+            --light: #ffffff;
+            --bg: #eef0ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background: var(--bg);
+            overflow-x: hidden;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* ---------------------------- NAVIGATION ---------------------------- */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(10px);
+            padding: 1rem 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+
+        header h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        nav a {
+            margin-left: 2rem;
+            font-weight: 600;
+            color: var(--dark);
+            text-decoration: none;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0%;
+            height: 3px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after { width: 100%; }
+
+        /* ---------------------------- HERO SECTION ---------------------------- */
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6% 5%;
+            min-height: 90vh;
+            position: relative;
+            color: var(--light);
+            border-radius: 25px;
+            margin: 2rem 5%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        /* Animated wave background */
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 180%;
+            height: 180%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3), transparent);
+            animation: rotate 10s infinite linear;
+            top: -40%;
+            left: -40%;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            font-weight: 700;
+        }
+
+        /* Typing animation */
+        .typing {
+            font-size: 1.7rem;
+            border-right: 3px solid white;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            animation: typing 4s steps(30) forwards, blink 0.7s infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        .hero img {
+            width: 330px;
+            border-radius: 50%;
+            z-index: 10;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+        }
+
+
+        /* ---------------------------- SECTIONS ---------------------------- */
+        .section {
+            background: #fff;
+            margin: 2.5rem 5%;
+            padding: 4rem 5%;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            animation: fadeInUp 1.2s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ---------------------------- GRID FOR SKILLS / PROJECTS ---------------------------- */
+        .skills-grid, .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.9);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: 0.35s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 18px 40px rgba(0,0,0,0.2);
+        }
+
+        /* ---------------------------- CONTACT FORM ---------------------------- */
+        .contact form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            max-width: 600px;
+        }
+
+        .contact input, .contact textarea {
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid #ccc;
+            transition: 0.3s;
+        }
+
+        .contact input:focus, .contact textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(106,90,205,0.4);
+        }
+
+        button {
+            background: var(--secondary);
+            border: none;
+            padding: 1rem;
+            color: #fff;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: var(--primary);
+            transform: scale(1.05);
+        }
+
+        /* ---------------------------- FOOTER ---------------------------- */
+        footer {
+            background: var(--dark);
+            text-align: center;
+            padding: 1.5rem;
+            color: var(--light);
+        }
+
+        /* ---------------------------- RESPONSIVE ---------------------------- */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .hero img {
+                margin-bottom: 2rem;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <h2>Harshita Yadav</h2>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Hello, I’m Harshita</h1>
+            <div class="typing">Aspiring Full Stack Developer</div>
+        </div>
+        <img src="https://via.placeholder.com/330" alt="Profile" />
+    </section>
+
+    <section id="about" class="section">
+        <h2>About Me</h2>
+        <p>I am Harshita Yadav, a passionate developer who loves building interactive experiences and modern web applications using clean, efficient code. I strive to make every project look elegant and perform smoothly.</p>
+    </section>
+
+    <section id="skills" class="section">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+            <div class="card">HTML</div>
+            <div class="card">CSS</div>
+            <div class="card">JavaScript</div>
+            <div class="card">Python</div>
+            <div class="card">React</div>
+            <div class="card">C++</div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+            <div class="card">
+                <h3>Portfolio Website</h3>
+                <p>A beautifully animated, modern portfolio designed using Flexbox, Grid, and CSS transitions.</p>
+            </div>
+            <div class="card">
+                <h3>Weather App</h3>
+                <p>Real‑time weather information with API integration and responsive UI.</p>
+            </div>
+            <div class="card">
+                <h3>Dashboard UI</h3>
+                <p>An interactive analytics dashboard featuring charts and widgets.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact">
+        <h2>Contact Me</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required />
+            <input type="email" placeholder="Your Email" required />
+            <textarea rows="5" placeholder="Your Message"></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+
+        <div style="margin-top:2rem; font-size:1.1rem; line-height:1.8;">
+            <p><strong>Email:</strong> harshita.yadav@example.com</p>
+            <p><strong>Phone:</strong> +91 9876543210</p>
+            <p><strong>Location:</strong> India</p>
+            <p><strong>Instagram:</strong> @harshita.codes</p>
+        </div>
+    </section>
+
+    <footer>
+        © 2025 Harshita Yadav | All Rights Reserved
+    </footer>
+
+</body>
+</html>
